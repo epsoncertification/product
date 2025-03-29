@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>EPSON 經銷商管理系統前台 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* ✅ 新增藍色漸層背景 */
+            background: linear-gradient(to bottom right, #3a7bd5, #00d2ff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #005CAF;
+            border: none;
+            color: #ffffff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>EPSON 經銷商管理系統前台 </h2>
+        <form id="verification-form">
+            <div class="form-group">
+                <label for="certificate-number">證明書字號</label>
+                <input type="text" id="certificate-number" name="certificate-number" required>
+            </div>
+            <div class="form-group">
+                <label for="verification-code">驗證碼</label>
+                <input type="text" id="verification-code" name="verification-code" required>
+            </div>
+            <button type="submit" class="submit-btn">提交</button>
+            <p class="error-message" id="error-message">輸入的證明書字號或驗證碼不正確，請重新輸入。</p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('verification-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var certificateNumber = document.getElementById('certificate-number').value;
+            var verificationCode = document.getElementById('verification-code').value;
+            if (certificateNumber === 'E.x-2025C20001_01' && verificationCode === 'Q1740L9UUV') {
+                window.location.href = 'success.html';
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
